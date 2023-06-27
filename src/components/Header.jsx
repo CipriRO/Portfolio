@@ -40,7 +40,7 @@ export default function Header({ isLoader }) {
   }
 
   return (
-    <header className="fixed overflow-hidden top-0 left-0 right-0 h-16 z-20">
+    <header className="fixed overflow-hidden top-0 left-0 right-0 h-20 z-20 backdrop-blur">
       <motion.div
         className="w-full h-full py-3 px-6 flex justify-between items-center"
         variants={headerVariants}

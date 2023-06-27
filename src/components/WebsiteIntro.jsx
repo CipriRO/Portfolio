@@ -29,7 +29,6 @@ export default function WebsiteIntro({ isLoader, setIsLoader }) {
               when="instant"
               gap="lg:gap-x-3 gap-x-1"
               className="lg:text-[5vw] text-[13vw] font-bold justify-center"
-              wordStyle="3|lg:indent-0,indent-[15vw]"
             >
               Hey, I&apos;m Ciprian.
             </TextAnimation>
@@ -37,7 +36,7 @@ export default function WebsiteIntro({ isLoader, setIsLoader }) {
               when="instant"
               gap="gap-x-2"
               wordStyle="3,4,5|text-brand,font-bold"
-              className="lg:text-[2.5vw] text-[6.5vw] font-semibold"
+              className="lg:text-[2.5vw] text-[6.5vw] font-semibold justify-center"
               afterTrigger={() => setIsLoader(false)}
             >
               I&apos;m a Front End Developer.

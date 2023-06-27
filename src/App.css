@@ -8,3 +8,7 @@
   padding: 0 1.5rem;
   text-align: center;
 }
+
+.center-transform {
+  transform: translate(-50%, -50%) !important;
+}
