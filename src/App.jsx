@@ -7,11 +7,16 @@ import Projects from "./components/Projects";
 import eliasProject1 from "./assets/images/elias-construction-1.jpg";
 import eliasProject2 from "./assets/images/elias-construction-2.jpg";
 import eliasProject3 from "./assets/images/elias-construction-3.jpg";
+import ViewProject from "./components/viewProject";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const [isLoader, setIsLoader] = useState(true);
+  const [viewState, setViewState] = useState(false);
+
   const projects = [
     {
+      id: 0,
       name: "Elias Construction",
       duration: "5-6 days",
       date: "16.06.2023",
@@ -30,9 +35,15 @@ function App() {
       {!isLoader && (
         <>
           <AboutMe />
-            <Projects
-              projects={projects}
-            />
+          <Projects projects={projects} setViewState={setViewState} />
+          <AnimatePresence>
+            {viewState !== false && (
+              <ViewProject
+                images={projects[viewState].images}
+                setViewState={setViewState}
+              />
+            )}
+          </AnimatePresence>
         </>
       )}
     </>

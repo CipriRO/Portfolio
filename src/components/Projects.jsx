@@ -4,7 +4,7 @@ import SimpleTextAnimation from "./SimpleTextAnimation";
 import { useEffect, useRef } from "react";
 import PropTypes from 'prop-types';
 
-export default function Projects({projects}) {
+export default function Projects({projects, setViewState}) {
 
   const Ref = useRef(null);
   const isInView = useInView(Ref, { once: true });
@@ -42,10 +42,10 @@ export default function Projects({projects}) {
       <div className="flex justify-center max-w-3/4 flex-wrap gap-3 p-4">
         {projects.map((project, index) => (
           <motion.div
-            whileTap={{ scale: 0.98 }}
             whileHover={{ scale: 1.02 }}
+            onTap={() => setViewState(index)}
             key={ index }
-            className="flex flex-col max-w-[24rem] shadow-xl cursor-pointer"
+            className="flex flex-col max-w-[24rem] shadow-xl"
           >
             <div className="flex flex-col justify-center items-center pt-2 gap-3 bg-[#222930] rounded-t-3xl overflow-hidden">
               <SimpleTextAnimation when="inView" from="left">
@@ -56,7 +56,7 @@ export default function Projects({projects}) {
                 variants={containerImages}
                 initial="hidden"
                 animate={controls}
-                className="relative flex items-center justify-center w-full h-32 shadow-lg"
+                className="relative flex items-center justify-center w-full h-32 shadow-lg cursor-pointer"
               >
                 {project.images.map((image, index) => (
                   <motion.img
@@ -106,4 +106,5 @@ export default function Projects({projects}) {
 
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
+  setViewState: PropTypes.func.isRequired
 }
