@@ -1,32 +1,42 @@
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import TextAnimation from "./TextAnimation";
 import SimpleTextAnimation from "./SimpleTextAnimation";
-import { useEffect, useRef } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import ProjectsAnimation from "./projectsAnimation";
 
-export default function Projects({projects, setViewState}) {
+export default function Projects({ projects, setViewState }) {
+  const imagesVariants = (index, length) => {
+    const existMiddleImage = length % 2 !== 0;
+    const imageMovementUnit = !existMiddleImage
+      ? 28 / length
+      : 28 / (length - 1);
+    const direction = existMiddleImage
+      ? index > (length - 1) / 2
+        ? -1
+        : index < (length - 1) / 2
+        ? 1
+        : 0
+      : index <= (length - 1) / 2
+      ? 1
+      : index > (length - 1) / 2 && -1;
+    const Xvalue =
+      direction === -1
+        ? (28 - imageMovementUnit * (length - 1 - index)) * direction
+        : direction === 1
+        ? imageMovementUnit * (length - index - 1)
+        : 0;
+    console.log(
+      "index: ",
+      index,
+      "  length: ",
+      length,
+      "   direction: ",
+      direction
+    );
 
-  const Ref = useRef(null);
-  const isInView = useInView(Ref, { once: true });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    isInView && controls.start("visible");
-  }, [isInView, controls]);
-
-  const containerImages = {
-    hidden: { opacity: 0, y: 100 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { delay: 0.3, when: "beforeChildren" },
-    },
-  };
-
-  const imagesVariants = (index) => {
     return {
-      initial: { x: 0, y: 0 },
-      visible: { x: index === 0 ? -28 : index === 2 && 28, y: 0 },
+      initial: { x: 0 },
+      visible: { x: Xvalue },
     };
   };
 
@@ -39,37 +49,40 @@ export default function Projects({projects, setViewState}) {
       >
         Projects
       </TextAnimation>
-      <div className="flex justify-center max-w-3/4 flex-wrap gap-3 p-4">
+      <TextAnimation
+        when="inView"
+        gap="gap-x-[1vw] lg:gap-x-[0.3vw]"
+        className="font-semibold text-left text-[3.9vw] lg:text-[1.4vw]"
+        wordStyle="1|indent-2"
+      >
+        Welcome to the showcase of my work! Here, you can explore a compilation
+        of projects that highlight my skills and dedication. Take a moment to
+        browse through my portfolio and get inspired by the diverse range of
+        work I have accomplished.
+      </TextAnimation>
+      <div className="flex justify-center max-w-3/4 flex-wrap gap-5 p-4 mt-3">
         {projects.map((project, index) => (
           <motion.div
             whileHover={{ scale: 1.02 }}
             onTap={() => setViewState(index)}
-            key={ index }
-            className="flex flex-col max-w-[24rem] shadow-xl"
+            key={index}
+            className="flex flex-col max-w-[24rem] shadow-xl cursor-pointer"
           >
             <div className="flex flex-col justify-center items-center pt-2 gap-3 bg-[#222930] rounded-t-3xl overflow-hidden">
               <SimpleTextAnimation when="inView" from="left">
-                <p className="font-bold text-xl">{ project.name }</p>
+                <p className="font-bold text-xl">{project.name}</p>
               </SimpleTextAnimation>
-              <motion.div
-                ref={Ref}
-                variants={containerImages}
-                initial="hidden"
-                animate={controls}
-                className="relative flex items-center justify-center w-full h-32 shadow-lg cursor-pointer"
-              >
+              <ProjectsAnimation>
                 {project.images.map((image, index) => (
                   <motion.img
                     key={index}
-                    variants={imagesVariants(index)}
-                    className={`w-10/12 rounded-xl absolute top-1 ${
-                      index === 1 ? "z-10" : index === 0 && "z-20"
-                    }`}
+                    variants={imagesVariants(index, project.images.length)}
+                    className="w-10/12 rounded-xl absolute top-1"
                     src={image}
                     alt="project image"
                   />
                 ))}
-              </motion.div>
+              </ProjectsAnimation>
             </div>
 
             <div className="flex items-center flex-col bg-[#3B4754] p-3 gap-3 font-medium rounded-b-3xl z-10">
@@ -82,7 +95,7 @@ export default function Projects({projects, setViewState}) {
                 </SimpleTextAnimation>
               </div>
               <SimpleTextAnimation when="inView" from="left">
-                <p className="max-h-24 overflow-auto">
+                <p className="max-h-28 overflow-auto">
                   {project.description}
                   {project.link && (
                     <a
@@ -106,5 +119,5 @@ export default function Projects({projects, setViewState}) {
 
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
-  setViewState: PropTypes.func.isRequired
-}
+  setViewState: PropTypes.func.isRequired,
+};
