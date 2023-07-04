@@ -16,7 +16,7 @@ export default function WebsiteIntro({ isLoader, setIsLoader }) {
   return (
     <>
       <motion.section
-        className={`min-h-[100vh] flex flex-col lg:flex-row gap-3 items-center ${
+        className={`min-h-[90vh] mt-10 flex flex-col lg:flex-row gap-3 items-center ${
           isLoader ? "justify-center" : "lg:justify-around justify-center"
         }`}
       >
@@ -34,7 +34,7 @@ export default function WebsiteIntro({ isLoader, setIsLoader }) {
             </TextAnimation>
             <TextAnimation
               when="instant"
-              gap="gap-x-2"
+              gap="gap-x-1.5"
               wordStyle="3,4,5|text-brand,font-bold"
               className="lg:text-[2.5vw] text-[6.5vw] font-semibold justify-center"
               afterTrigger={() => setIsLoader(false)}

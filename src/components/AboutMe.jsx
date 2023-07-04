@@ -6,12 +6,12 @@ import MemojiImages from "./memojiImages";
 export default function AboutMe() {
   return (
     <>
-      <section className="min-h-[100vh] flex lg:flex-row flex-col items-center gap-4 lg:justify-around justify-center">
+      <section className="min-h-[90vh] flex lg:flex-row flex-col items-center gap-4 lg:justify-around justify-center">
         <MemojiImages memoji={memoji} />
         <div className="flex flex-col gap-3">
           <TextAnimation
             when="inView"
-            gap="lg:gap-x-2 gap-x-1"
+            gap="gap-x-2"
             className="lg:text-[4vw] text-[10vw] font-bold"
             wordStyle="2|text-brand"
           >
@@ -20,7 +20,7 @@ export default function AboutMe() {
           <div className="flex flex-col">
             <TextAnimation
               when="inView"
-              gap="gap-x-[1vw] lg:gap-x-[0.3vw]"
+              gap="gap-x-[0.8vw] lg:gap-x-[0.3vw]"
               className="font-semibold text-left text-[3.9vw] lg:text-[1.4vw]"
               wordStyle="1|indent-2"
             >

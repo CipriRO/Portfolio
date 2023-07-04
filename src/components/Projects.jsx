@@ -41,7 +41,7 @@ export default function Projects({ projects, setViewState }) {
   };
 
   return (
-    <motion.section className="min-h-[100vh] flex flex-col justify-center items-center">
+    <motion.section className="min-h-[90vh] flex flex-col justify-center items-center">
       <TextAnimation
         when="inView"
         gap="lg:gap-x-2 gap-x-1"
@@ -66,8 +66,22 @@ export default function Projects({ projects, setViewState }) {
             whileHover={{ scale: 1.02 }}
             onTap={() => setViewState(index)}
             key={index}
-            className="flex flex-col max-w-[24rem] shadow-xl cursor-pointer"
+            className="flex flex-col max-w-[24rem] shadow-xl cursor-pointer relative"
           >
+            {project.badge && (
+              <div
+                className={`badge absolute font-semibold z-10 ${
+                  project.badge.badgeType +
+                  " left-[" +
+                  project.badge.badgePosition.l +
+                  "] -top-[" +
+                  project.badge.badgePosition.t + ']'
+                }`}
+              >
+                {console.log(project.badge.badgePosition.l)}
+                {project.badge.badgeContent}
+              </div>
+            )}
             <div className="flex flex-col justify-center items-center pt-2 gap-3 bg-[#222930] rounded-t-3xl overflow-hidden">
               <SimpleTextAnimation when="inView" from="left">
                 <p className="font-bold text-xl">{project.name}</p>
