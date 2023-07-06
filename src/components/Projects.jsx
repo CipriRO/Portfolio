@@ -25,14 +25,6 @@ export default function Projects({ projects, setViewState }) {
         : direction === 1
         ? imageMovementUnit * (length - index - 1)
         : 0;
-    console.log(
-      "index: ",
-      index,
-      "  length: ",
-      length,
-      "   direction: ",
-      direction
-    );
 
     return {
       initial: { x: 0 },
@@ -70,15 +62,11 @@ export default function Projects({ projects, setViewState }) {
           >
             {project.badge && (
               <div
+                style={{left: project.badge.badgePosition.l, top:project.badge.badgePosition.t}}
                 className={`badge absolute font-semibold z-10 ${
-                  project.badge.badgeType +
-                  " left-[" +
-                  project.badge.badgePosition.l +
-                  "] -top-[" +
-                  project.badge.badgePosition.t + ']'
+                  project.badge.badgeType
                 }`}
               >
-                {console.log(project.badge.badgePosition.l)}
                 {project.badge.badgeContent}
               </div>
             )}

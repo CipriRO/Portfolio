@@ -35,7 +35,7 @@ function App() {
         clothingStore2,
         clothingStore1,
       ],
-      badge: {badgeType: 'badge-error', badgeContent: 'Abandoned', badgePosition: {l: '80%', t: '2%'}}
+      badge: {badgeType: 'badge-error', badgeContent: 'Abandoned', badgePosition: {l: '72%', t: '3.8%'}}
     },
     {
       name: "Elias Construction",
@@ -45,7 +45,7 @@ function App() {
       link: "https://eliconstruction.co.uk",
       linkName: "eliconstruction.co.uk",
       images: [eliasProject3, eliasProject2, eliasProject1],
-      badge: {badgeType: 'badge-success', badgeContent: 'Online', badgePosition: {l: '83%', t: '2%'}}
+      badge: {badgeType: 'badge-success', badgeContent: 'Online', badgePosition: {l: '80%', t: '3.8%'}}
     },
   ];
 
