@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 
 export default function ViewProject({ images, setViewState }) {
+  const reverseImages = images.slice().reverse();
+
   return (
     <>
       <motion.div
@@ -16,7 +18,7 @@ export default function ViewProject({ images, setViewState }) {
       />
       <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {duration: .5, ease: 'easeInOut'}}} exit={{opacity: 0,  transition: { duration: .5, ease: 'easeInOut' }}} className="fixed top-1/2 left-1/2 center-transform z-30 lg:w-[80vw] w-[100vw]">
         <div className="carousel w-full h-full rounded-2xl">
-          {images.map((image, index) => (
+          {reverseImages.map((image, index) => (
             <div
               key={index}
               id={`item${index + 1}`}
@@ -27,7 +29,7 @@ export default function ViewProject({ images, setViewState }) {
           ))}
         </div>
         <div className="flex justify-center w-full py-2 gap-2">
-          {images.map((image, index) => (
+          {reverseImages.map((image, index) => (
               <a key={index} href={`#item${index + 1}`} className="btn btn-xs">
               {index + 1}
             </a>

@@ -25,8 +25,10 @@ export default function ProjectsAnimation(props) {
       ref={Ref}
       variants={containerImages}
       initial="hidden"
+      whileHover={{ scale: 1.02 }}
+      onTap={() => props.setViewState(props.index)}
       animate={controls}
-      className="relative flex items-center justify-center w-full h-32 lg:h-36 shadow-lg"
+      className="relative flex items-center justify-center w-full h-32 lg:h-36 shadow-lg cursor-pointer"
     >
       {props.children}
     </motion.div>
@@ -35,4 +37,6 @@ export default function ProjectsAnimation(props) {
 
 ProjectsAnimation.propTypes = {
   children: PropTypes.node.isRequired,
+  setViewState: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 };

@@ -4,33 +4,26 @@ import SimpleTextAnimation from "./SimpleTextAnimation";
 import PropTypes from "prop-types";
 import ProjectsAnimation from "./projectsAnimation";
 
-export default function Projects({ projects, setViewState }) {
+export default function Projects({ projects, setViewState, githubIcon }) {
   const imagesVariants = (index, length) => {
-    const existMiddleImage = length % 2 !== 0;
-    const imageMovementUnit = !existMiddleImage
-      ? 28 / length
-      : 28 / (length - 1);
-    const direction = existMiddleImage
-      ? index > (length - 1) / 2
-        ? -1
-        : index < (length - 1) / 2
-        ? 1
-        : 0
-      : index <= (length - 1) / 2
-      ? 1
-      : index > (length - 1) / 2 && -1;
-    const Xvalue =
-      direction === -1
-        ? (28 - imageMovementUnit * (length - 1 - index)) * direction
-        : direction === 1
-        ? imageMovementUnit * (length - index - 1)
-        : 0;
-
+    const imageCount = length;
+    const middleIndex = Math.floor(imageCount / 2);
+    const isEven = imageCount % 2 === 0;
+    const translation = isEven ? 28 / middleIndex : 28 / (middleIndex + 1);
+    let Xvalue = "";
+  
+    if (index < middleIndex || (isEven && index === middleIndex)) {
+      Xvalue = translation * (middleIndex - index);
+    } else if (index > middleIndex) {
+      Xvalue = -translation * (index - middleIndex);
+    }
+  
     return {
       initial: { x: 0 },
       visible: { x: Xvalue },
     };
   };
+  
 
   return (
     <motion.section className="min-h-[90vh] flex flex-col justify-center items-center">
@@ -55,31 +48,47 @@ export default function Projects({ projects, setViewState }) {
       <div className="flex justify-center max-w-3/4 flex-wrap gap-5 p-4 mt-3">
         {projects.map((project, index) => (
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            onTap={() => setViewState(index)}
             key={index}
-            className="flex flex-col max-w-[24rem] shadow-xl cursor-pointer relative"
+            className="flex flex-col max-w-[24rem] shadow-xl relative"
           >
-            {project.badge && (
-              <div
-                style={{left: project.badge.badgePosition.l, top:project.badge.badgePosition.t}}
-                className={`badge absolute font-semibold z-10 ${
-                  project.badge.badgeType
-                }`}
-              >
-                {project.badge.badgeContent}
-              </div>
-            )}
             <div className="flex flex-col justify-center items-center pt-2 gap-3 bg-[#222930] rounded-t-3xl overflow-hidden">
-              <SimpleTextAnimation when="inView" from="left">
-                <p className="font-bold text-xl">{project.name}</p>
-              </SimpleTextAnimation>
-              <ProjectsAnimation>
+              <div className="flex justify-between items-center w-full px-4">
+                <div className="flex gap-2">
+                  {project.webLink && (
+                    <a href={project.webLink} target="_blank" rel="noreferrer">
+                      {webLinkIcon()}
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target="_black"
+                      rel="noreferrer"
+                    >
+                      {githubIcon()}
+                    </a>
+                  )}
+                </div>
+
+                <SimpleTextAnimation when="inView" from="left">
+                  <p className="font-bold text-xl">{project.name}</p>
+                </SimpleTextAnimation>
+
+                {project.badge && (
+                  <div
+                    className={`badge font-semibold z-10 ${project.badge.badgeType}`}
+                  >
+                    {project.badge.badgeContent}
+                  </div>
+                )}
+              </div>
+
+              <ProjectsAnimation setViewState={setViewState} index={index}>
                 {project.images.map((image, index) => (
                   <motion.img
                     key={index}
                     variants={imagesVariants(index, project.images.length)}
-                    className="w-10/12 rounded-xl absolute top-1"
+                    className="w-10/12 rounded-xl absolute top-1 shadow-[10px_1px_10px_0_rgb(0,0,0,0.15)]"
                     src={image}
                     alt="project image"
                   />
@@ -97,19 +106,7 @@ export default function Projects({ projects, setViewState }) {
                 </SimpleTextAnimation>
               </div>
               <SimpleTextAnimation when="inView" from="left">
-                <p className="max-h-28 overflow-auto">
-                  {project.description}
-                  {project.link && (
-                    <a
-                      className="text-brand"
-                      target="_blank"
-                      rel="noreferrer"
-                      href={project.link}
-                    >
-                      {project.linkName}
-                    </a>
-                  )}
-                </p>
+                <p className="max-h-28 overflow-auto">{project.description}</p>
               </SimpleTextAnimation>
             </div>
           </motion.div>
@@ -122,4 +119,25 @@ export default function Projects({ projects, setViewState }) {
 Projects.propTypes = {
   projects: PropTypes.array.isRequired,
   setViewState: PropTypes.func.isRequired,
+  githubIcon: PropTypes.func.isRequired,
 };
+
+function webLinkIcon() {
+  return (
+    <svg
+      width="26"
+      height="26"
+      fill="none"
+      className="hover:stroke-white transition-colors"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M10 13.996a3.5 3.5 0 0 0 5 0l4-4a3.536 3.536 0 0 0-5-5l-.5.5"></path>
+      <path d="M14 10.004a3.502 3.502 0 0 0-5 0l-4 4a3.536 3.536 0 0 0 5 5l.5-.5"></path>
+    </svg>
+  );
+}

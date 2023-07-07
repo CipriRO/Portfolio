@@ -14,7 +14,7 @@ export default function SimpleTextAnimation(props) {
   }, [isInView, controls, when]);
 
   const container = {
-    hidden: { x: props.from === 'left' ? -100 : 100, opacity: 0 },
+    hidden: { x: props.from === 'left' ? -70 : 70, opacity: 0 },
     visible: {
       opacity: 1,
       x: 0,
