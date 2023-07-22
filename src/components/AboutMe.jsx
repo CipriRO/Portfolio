@@ -26,19 +26,32 @@ export default function AboutMe() {
             >
               I have always enjoyed coding and creating beautiful interfaces
               that can be of help to people. I take pride in the results I
-              achieve. However, I haven&apos;t always known what to code, where to
-              code, or how to code. This changed when a friend of mine suggested
-              an idea: &apos;Why don&apos;t you try making a website?&apos;
+              achieve. However, I haven&apos;t always known what to code, where
+              to code, or how to code. This changed when a friend of mine
+              suggested an idea: &apos;Why don&apos;t you try making a
+              website?&apos;
             </TextAnimation>
             <TextAnimation
               when="inView"
-              wordStyle="31,32|text-brand;1|indent-2"
+              gap="gap-x-[0.8vw] lg:gap-x-[0.3vw]"
+              className="font-semibold text-left text-[3.9vw] lg:text-[1.4vw]"
+              wordStyle="1|indent-2;4,5,21,23,33,38|text-brand"
+            >
+              I&apos;m new to frontend development, having started just a couple
+              months ago, but I will always try my best to learn and improve.
+              Although I&apos;m still gaining experience, I have worked with
+              React as well as helpful UI packages like Tailwind for styling and
+              Framer Motion for animations.
+            </TextAnimation>
+            <TextAnimation
+              when="inView"
+              wordStyle="1,9,11,18,19,24|text-brand;1|indent-2"
               gap="gap-x-[1vw] lg:gap-x-[0.3vw]"
               className="font-semibold text-left text-[3.9vw] lg:text-[1.4vw]"
             >
-              And here I am, developing this portfolio for my future clients
-              (maybe you are one of them) who can not only view my projects but
-              also experience my passion for web development..
+              I look forward to continuing to learn new skills and techniques
+              that will allow me to create intuitive, aesthetically-pleasing
+              interfaces that users will enjoy.
             </TextAnimation>
           </div>
         </div>

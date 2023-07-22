@@ -45,7 +45,7 @@ export default function Projects({ projects, setViewState, githubIcon }) {
         browse through my portfolio and get inspired by the diverse range of
         work I have accomplished.
       </TextAnimation>
-      <div className="flex justify-center max-w-3/4 flex-wrap gap-5 p-4 mt-3">
+      <div className="flex flex-wrap gap-5 p-4 mt-3">
         {projects.map((project, index) => (
           <motion.div
             key={index}
@@ -106,7 +106,7 @@ export default function Projects({ projects, setViewState, githubIcon }) {
                 </SimpleTextAnimation>
               </div>
               <SimpleTextAnimation when="inView" from="left">
-                <p className="max-h-28 overflow-auto">{project.description}</p>
+                <p className="max-h-40 overflow-auto">{project.description}</p>
               </SimpleTextAnimation>
             </div>
           </motion.div>

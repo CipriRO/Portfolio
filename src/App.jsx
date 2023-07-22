@@ -16,6 +16,8 @@ import clothingStore6 from "./assets/images/clothing-store-6.jpg";
 import todoApp1 from "./assets/images/todo-app-1.jpg";
 import todoApp2 from "./assets/images/todo-app-2.jpg";
 import todoApp3 from "./assets/images/todo-app-3.jpg";
+import weatherApp1 from "./assets/images/weather-app-1.jpg";
+import weatherApp2 from "./assets/images/weather-app-2.jpg";
 import ViewProject from "./components/viewProject";
 import { AnimatePresence } from "framer-motion";
 import ContactMe from "./components/ContactMe";
@@ -29,7 +31,9 @@ function App() {
       name: "Hoodie Land",
       duration: "** days",
       date: "**-**-2021",
-      description: `This project I started in Web Development shows a mistake I made as a beginner. I tried to create a drop shipping website without any previous experience in Web Development, but I couldn't finish it. The project uses common technologies like html, css, javascript, react, bootstrap, and php. It also has a password-protected dashboard where the owner can check the status of products, handle contact forms, and more. Please note that as a front-end developer, I focus on the visual and user interface aspects of the project, and I do not offer php services for the backend systems like the password-protected dashboard.`,
+      description: `This project I started in Web Development shows a mistake I made as a beginner. I tried to create a drop shipping website without any previous experience in Web Development, but I couldn't finish it. 
+      The project uses common technologies like html, css, javascript, react, bootstrap, and php. It also has a password-protected dashboard where the owner can check the status of products, handle contact forms, and more.Please note that as a front-end developer, I focus on the visual and user interface aspects of the project, and I do not offer php services for the backend systems like the password-protected dashboard.`,
+      githubLink: "https://github.com/CipriRO/Clothing-Store-Website",
       images: [
         clothingStore6,
         clothingStore5,
@@ -38,30 +42,43 @@ function App() {
         clothingStore2,
         clothingStore1,
       ],
-      badge: {badgeType: 'badge-error', badgeContent: 'Abandoned'}
+      badge: { badgeType: "badge-error", badgeContent: "Abandoned" },
     },
     {
       name: "Elias Construction",
       duration: "5-6 days",
       date: "16.06.2023",
-      description: `A small construction company named "Elias Construction" needed a basic website to promote their services online. Without hesitation, I created one for them. The website includes a homepage, contact page, and sections for terms and conditions as well as privacy policy. This project utilizes common technologies such as html, css, javascript, react, tailwind, daisyUI, and react router. You can visit the website at eliconstruction.co.uk`,
+      description: `A small construction company named "Elias Construction" needed a basic website to promote their services online. Without hesitation, I created one for them. The website includes a homepage, contact page, and sections for terms and conditions as well as privacy policy.
+      This project utilizes common technologies such as html, css, javascript, react, tailwind, daisyUI, and react router. For privacy reasons, the website doesn't have a repository on github!`,
       webLink: "https://eliconstruction.co.uk",
       images: [eliasProject3, eliasProject2, eliasProject1],
-      badge: {badgeType: 'badge-success', badgeContent: 'Online'}
+      badge: { badgeType: "badge-success", badgeContent: "In use" },
     },
     {
       name: "Todo App",
       duration: "2 days",
       date: "07.07.2023",
-      description: `This project is a todo list app that lets you create, delete and complete your tasks with ease. It is built with HTML, CSS, JS, React.js, Tailwind, DaisyUI and Framer Motion. It has a beautiful design that follows the principles of minimalism and usability. It also has animations that make the app more interactive and fun to use. You can add a new task by typing in the input field and clicking 'Add'. You can delete a task by clicking on the trash icon. You can mark a task as completed by clicking on the check icon.`,
+      description: `This project is a todo list app that lets you create, delete and complete your tasks with ease. It is built with HTML, CSS, JS, React.js, Tailwind, DaisyUI and Framer Motion.
+      It has a beautiful design that follows the principles of minimalism and usability. It also has animations that make the app more interactive and fun to use. You can add a new task by typing in the input field and clicking 'Add'. You can delete a task by clicking on the trash icon.
+      You can mark a task as completed by clicking on the check icon.`,
       webLink: "asdass",
       githubLink: "https://github.com/CipriRO/Todo-App",
-      images: [
-        todoApp3,
-        todoApp2,
-        todoApp1
-      ],
-      badge: {badgeType: 'badge-warning', badgeContent: 'New'}
+      images: [todoApp3, todoApp2, todoApp1],
+      badge: { badgeType: "badge-warning", badgeContent: "Easy" },
+    },
+    {
+      name: "Weather App",
+      duration: "9 days",
+      date: "21.07.2023",
+      description: `This weather app provides users with up-to-date weather forecasts for their location or any location they search for. The clean, intuitive interface shows hourly and daily forecasts on the left side, with more detailed current conditions on the right.
+      Users can view hourly predictions for any day by clicking on that date in the daily forecast section. The hourly view updates as time passes to keep users informed. The current weather panel pops up with a tap on mobile devices for easy access.
+      Location detection automatically pulls weather data for the user's area on first load. A search feature allows looking up forecasts by city or zip code anywhere in the world. Information presented includes temperature, humidity, wind, chance of rain, and more.
+      I built this fully-responsive weather app using HTML, CSS, React.js, Tailwind for styling, and Framer Motion for animations. It leverages the WeatherAPI.com API to pull in real-time weather data. Clean code and a simple but elegant design were top priorities.
+      This project gave me good practice with APIs and React. I wanted to add more complex features but kept it simple due to time constraints.`,
+      webLink: "asdass",
+      githubLink: "https://github.com/CipriRO/Weather-App",
+      images: [weatherApp2, weatherApp1],
+      badge: { badgeType: "badge-success", badgeContent: "Api Used" },
     },
   ];
 
@@ -73,7 +90,11 @@ function App() {
       {!isLoader && (
         <>
           <AboutMe />
-          <Projects projects={projects} setViewState={setViewState} githubIcon={githubIcon} />
+          <Projects
+            projects={projects}
+            setViewState={setViewState}
+            githubIcon={githubIcon}
+          />
           <AnimatePresence>
             {viewState !== false && (
               <ViewProject
