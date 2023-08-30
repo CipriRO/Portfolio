@@ -1,4 +1,5 @@
 import Image from "next/image";
+import memoji from "@/public/images/memoji-main.jpg";
 
 const Main = () => {
   return (
@@ -8,7 +9,7 @@ const Main = () => {
         <p className="text-3xl">I am a full stack developer!</p>
       </div>
 
-      <Image src="/../images/memoji-main.jpg" width={350} height={350} priority alt="Person with thumbs up" />
+      <Image src={memoji} width={350} height={350} priority alt="Person with thumbs up" />
     </section>
   );
 };
