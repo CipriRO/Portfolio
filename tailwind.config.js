@@ -1,19 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      brand: '#0891b2',
-      white: '#e2e8f0'
+    extend: {
+      colors: {
+        "_dark-blue": "#007EA7",
+        "_dark-rose": "#6B0F1A",
+        _platinum: "#DCE0D9",
+        "_rich-black": "#0D1B1E",
+      },
     },
-    extend: {},
   },
-  daisyui: {
-    themes: false,
-  },
-  plugins: [require("daisyui")],
-}
-
+  plugins: [],
+};

@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  text-align: center;
-}
-
-.center-transform {
-  transform: translate(-50%, -50%) !important;
-}
 
 /* Works on Firefox */
 * {
