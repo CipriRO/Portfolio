@@ -10,28 +10,27 @@ import { SignalIcon } from "@heroicons/react/24/solid";
 const MyProjects = () => {
   const projects = [
     {
+      name: "Elias Construction",
+      duration: "5-6 days",
+      date: "16.06.2023",
+      description: `A small construction company named "Elias Construction" needed a basic website to promote their services online. Without hesitation, I created one for them. The website includes a homepage, and sections for terms and conditions as well as privacy policy.
+      This project utilizes common technologies such as HTML, CSS, Javascript, Next.js, React.js, Tailwind CSS and DaisyUI. For privacy reasons, the website doesn't have a public repository on github!`,
+      demoLink: "https://eliconstruction.co.uk",
+      defaultImage: eliasProject1,
+      // images: [eliasProject3, eliasProject2, eliasProject1],
+    },
+    {
       name: "Weather App",
       duration: "9 days",
       date: "21.07.2023",
       description: `This weather app provides users with up-to-date weather forecasts for their location or any location they search for. The clean, intuitive interface shows hourly and daily forecasts on the left side, with more detailed current conditions on the right.
       Users can view hourly predictions for any day by clicking on that date in the daily forecast section. The hourly view updates as time passes to keep users informed. The current weather panel pops up with a tap on mobile devices for easy access.
       Location detection automatically pulls weather data for the user's area on first load. A search feature allows looking up forecasts by city or zip code anywhere in the world. Information presented includes temperature, humidity, wind, chance of rain, and more.
-      I built this fully-responsive weather app using HTML, CSS, React.js, Tailwind for styling, and Framer Motion for animations. It leverages the WeatherAPI.com API to pull in real-time weather data. Clean code and a simple but elegant design were top priorities.
+      I built this fully-responsive weather app using HTML, CSS, React.js, Tailwind CSS for styling, and Framer Motion for animations. It leverages the WeatherAPI.com API to pull in real-time weather data. Clean code and a simple but elegant design were top priorities.
       This project gave me good practice with APIs and React. I wanted to add more complex features but kept it simple due to time constraints.`,
       githubLink: "https://github.com/CipriRO/Weather-App",
       defaultImage: weatherApp1,
       // images: [weatherApp2, weatherApp1],
-      badge: { badgeType: "badge-success", badgeContent: "Weather Api Used" },
-    },
-    {
-      name: "Elias Construction",
-      duration: "5-6 days",
-      date: "16.06.2023",
-      description: `A small construction company named "Elias Construction" needed a basic website to promote their services online. Without hesitation, I created one for them. The website includes a homepage, contact page, and sections for terms and conditions as well as privacy policy.
-      This project utilizes common technologies such as html, css, javascript, react, tailwind, daisyUI, and react router. For privacy reasons, the website doesn't have a repository on github!`,
-      demoLink: "https://eliconstruction.co.uk",
-      defaultImage: eliasProject1,
-      // images: [eliasProject3, eliasProject2, eliasProject1],
     },
 
     {
@@ -44,7 +43,6 @@ const MyProjects = () => {
       githubLink: "https://github.com/CipriRO/Todo-App",
       defaultImage: todoApp3,
       // images: [todoApp3, todoApp2, todoApp1],
-      badge: { badgeType: "badge-warning", badgeContent: "Easy" },
     },
     {
       name: "Hoodie Land",
@@ -62,7 +60,6 @@ const MyProjects = () => {
       //   clothingStore2,
       //   clothingStore1,
       // ],
-      badge: { badgeType: "badge-error", badgeContent: "Abandoned" },
     },
   ];
 
@@ -84,7 +81,7 @@ const MyProjects = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex flex-col max-w-[24rem] rounded-2xl h-96 bg-[#1d2d31d3] text-_platinum p-3"
+            className="flex flex-col max-w-[24rem] rounded-2xl h-[30rem] bg-[#1d2d31d3] text-_platinum p-3"
           >
             <Image
               src={project.defaultImage}
@@ -106,7 +103,7 @@ const MyProjects = () => {
               </div>
             </div>
 
-            <p className="indent-2 overflow-hidden mb-2">{project.description}</p>
+            <p className="indent-2 overflow-auto mb-2">{project.description}</p>
 
             <div className="flex justify-around items-center">
               <Link
