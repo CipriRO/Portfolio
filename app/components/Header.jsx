@@ -1,5 +1,6 @@
 import Link from "next/link";
 import * as Icons from "@/app/components/Icons";
+import { ContactDetalis } from "@/constants";
 
 const Header = () => {
   return (
@@ -9,32 +10,17 @@ const Header = () => {
       </h1>
 
       <div className="flex gap-3 text-slate-100">
-        <Link
-          className="hover:text-_dark-blue transition-colors drop-shadow"
-          href="mailto:stefanciprian444@gmail.com"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Icons.email />
-        </Link>
-
-        <Link
-          className="hover:text-_dark-blue transition-colors drop-shadow"
-          href="https://github.com/CipriRO"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Icons.github />
-        </Link>
-
-        <Link
-          className="hover:text-_dark-blue transition-colors drop-shadow"
-          href="https://www.instagram.com/tipi_26/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Icons.insta />
-        </Link>
+        {ContactDetalis.map((contact, index) => (
+          <Link
+            key={index}
+            className="hover:text-_dark-blue transition-colors drop-shadow"
+            href={contact.address}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {contact.icon}
+          </Link>
+        ))}
       </div>
     </header>
   );

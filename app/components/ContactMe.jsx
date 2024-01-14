@@ -2,6 +2,7 @@ import Image from "next/image";
 import memoji from "@/public/images/memoji-contactMe.jpg";
 import Link from "next/link";
 import * as Icons from "@/app/components/Icons";
+import { ContactDetalis } from "@/constants";
 
 const ContactMe = () => {
   return (
@@ -23,35 +24,18 @@ const ContactMe = () => {
         </p>
 
         <div className="flex flex-col gap-2 items-center">
-          <Link
-            className="hover:text-_dark-blue transition-colors drop-shadow flex gap-2 items-center"
-            href="mailto:stefanciprian444@gmail.com"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Icons.email />
-            <p>Email</p>
-          </Link>
-
-          <Link
-            className="hover:text-_dark-blue transition-colors drop-shadow flex gap-2 items-center"
-            href="https://github.com/CipriRO"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Icons.github />
-            <p>Github</p>
-          </Link>
-
-          <Link
-            className="hover:text-_dark-blue transition-colors drop-shadow flex gap-2 items-center"
-            href="https://www.instagram.com/tipi_26/"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <Icons.insta />
-            <p>Instagram</p>
-          </Link>
+          {ContactDetalis.map((contact, index) => (
+            <Link
+              key={index}
+              className="hover:text-_dark-blue transition-colors drop-shadow flex gap-2 items-center"
+              href={contact.address}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {contact.icon}
+              <p>{contact.name}</p>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

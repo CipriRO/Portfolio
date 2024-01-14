@@ -13,7 +13,7 @@ const AboutMe = () => {
       <div className="flex flex-col gap-3 pr-5">
         <h1 className="text-5xl font-bold">About Me.</h1>
         <p className="indent-2">
-          An aspiring full stack web developer with experience building
+          An aspiring front end web developer with experience building
           responsive front-end web applications using HTML, CSS, JavaScript,
           React.js, Next.js, Redux, and Framer Motion. Back-end skills include
           developing APIs with Next.js, implementing authentication with
@@ -23,7 +23,7 @@ const AboutMe = () => {
           continue expanding my skills.
         </p>
 
-        <div className="flex gap-6 mt-4 items-center lg:justify-end justify-center flex-wrap">
+        <div className="flex gap-3 mt-4 items-center lg:justify-start justify-center flex-wrap">
           <Image
             title="HTML"
             src="/../icons/html-icon.svg"
